@@ -71,3 +71,10 @@ install.sh        the installer (host it anywhere; pulls files from GitHub)
 - **Clipboard:** copies reach the local clipboard via OSC 52, so it works over
   SSH as long as your terminal supports it (iTerm2, kitty, WezTerm, Windows
   Terminal, Ghostty, …).
+- **Session restore on first launch:** this config sets `@continuum-restore 'on'`
+  and `@continuum-boot 'on'`, so tmux-continuum restores your last saved session
+  layout when the tmux server starts, and (per `@resurrect-processes`) relaunches
+  `node`, `npm`, etc. On a brand-new machine nothing is saved yet, so nothing
+  happens — but if you carry over saved state, expect a burst of restored
+  processes on the first `tmux` launch. The installer itself never starts a
+  server, so installing is always quiet; restore only fires when *you* start tmux.
