@@ -25,8 +25,9 @@ cat <<EOF
    Alt+arrows   move between panes             (no prefix)
    Shift+ < >   previous / next window         (no prefix)
    <p> j        jump to a session (fuzzy picker)
-   <p> g        new project: claude + 2 shells (pick/create a dir)
+   <p> g        new SESSION: claude + 2 shells (pick/create a dir)
    <p> a        cd every pane in the window to a dir
+   <p> .        move this window to another session (pick/create)
    <p> ?        show this guide
 
   -- SESSIONS  (you run one per project) ------------------------
