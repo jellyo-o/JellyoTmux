@@ -24,6 +24,31 @@ say()  { printf '==> %s\n' "$1"; }
 warn() { printf '  ! %s\n' "$1" >&2; }
 
 # ---------------------------------------------------------------------------
+# 0. Confirm before touching anything (skip with JELLYOTMUX_YES=1).
+# ---------------------------------------------------------------------------
+if [ -z "$JELLYOTMUX_YES" ]; then
+  cat <<'SUMMARY'
+
+  JellyoTmux installer — this will:
+    - link ~/.tmux.conf + helper scripts into ~/.tmux/
+    - install any missing prereqs (tmux, git, fzf, less)
+    - install TPM + plugins (tmux-resurrect, tmux-continuum)
+  It does NOT start tmux or restore any sessions.
+
+SUMMARY
+  if [ -r /dev/tty ]; then          # read the key even though stdin is the curl pipe
+    printf '  Proceed? [y/N] '
+    read ans </dev/tty
+    case "$ans" in
+      y|Y|yes|YES) ;;
+      *) printf '  Aborted.\n'; exit 0 ;;
+    esac
+  else
+    say "non-interactive shell (no /dev/tty) — proceeding"
+  fi
+fi
+
+# ---------------------------------------------------------------------------
 # 1. Prerequisites: tmux, git, fzf, less (xclip optional). Best-effort install.
 # ---------------------------------------------------------------------------
 PKG=""
