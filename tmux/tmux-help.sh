@@ -28,6 +28,8 @@ cat <<EOF
    <p> g        new SESSION: claude + 2 shells (pick/create a dir)
    <p> a        cd every pane in the window to a dir
    <p> .        move this window to another session (pick/create)
+   <p> X        pick a session to kill (with confirm)
+   <p> Enter    floating scratch shell in the current dir
    <p> ?        show this guide
 
   -- SESSIONS  (you run one per project) ------------------------
