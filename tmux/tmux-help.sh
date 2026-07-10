@@ -24,6 +24,7 @@ cat <<EOF
    <p> -        split pane top / bottom
    Alt+arrows   move between panes             (no prefix)
    Shift+ < >   previous / next window         (no prefix)
+   <p> Tab      flip to last-used session (Alt-Tab-style toggle)
    <p> j        jump to a session (fuzzy picker)
    <p> g        new SESSION: claude + 2 shells (pick/create a dir)
    <p> a        cd every pane in the window to a dir
@@ -33,6 +34,7 @@ cat <<EOF
    <p> ?        show this guide
 
   -- SESSIONS  (you run one per project) ------------------------
+   <p> Tab      flip to last-used session (toggle)  (custom)
    <p> j        fuzzy session switcher             (custom)
    <p> s        session / window tree + preview
    <p> d        detach (leaves everything running)
