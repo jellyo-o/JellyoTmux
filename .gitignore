@@ -2,3 +2,6 @@
 *.swp
 *~
 .DS_Store
+
+# Local work log (kept on-disk, not tracked)
+WORKLOG.md
