@@ -1,14 +1,11 @@
 #!/bin/sh
-# Fuzzy-pick a session to kill, with confirmation. Excludes the current session
-# (kill the one you're in via  prefix + :  then  k<enter>  if you need to).
+# Fuzzy-pick a session to kill, with a single-key confirmation. Excludes the
+# current session (kill the one you're in via  prefix + :  then  k<enter>).
 cur=$(tmux display-message -p '#S')
 target=$(tmux list-sessions -F '#S' | grep -vxF "$cur" \
   | fzf --reverse --prompt='kill session> ')
 [ -z "$target" ] && exit 0
 
-printf "Kill session '%s'? [y/N] " "$target"
-read ans
-case "$ans" in
-  y|Y|yes|YES) tmux kill-session -t "=$target" ;;
-  *) ;;
-esac
+if "$HOME/.tmux/tmux-confirm.sh" "Kill session '$target'? [y/N] "; then
+  tmux kill-session -t "=$target"
+fi
